@@ -20,9 +20,9 @@ var (
 
 // telebotCmd represents the telebot command
 var telebotCmd = &cobra.Command{
-	Use:   "telebot",
+	Use:     "telebot",
 	Aliases: []string{"start"},
-	Short: "тут може бути Ваша реклама",
+	Short:   "тут може бути Ваша реклама",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -45,19 +45,17 @@ to quickly create a Cobra application.`,
 		tbot.Handle(telebot.OnText, func(m telebot.Context) error {
 
 			log.Print(m.Message().Payload, m.Text())
-			payload :=m.Message().Payload
+			payload := m.Message().Payload
 
 			switch payload {
 
-				case "hello":  
-					err = m.Send(fmt.Sprintf("Hello 👋. Im AI %s", appVersion))
-				
-				case "huilo":  
-					err = m.Send("Sam huilo 😡😡😡. ")
-				
+			case "hello":
+				err = m.Send(fmt.Sprintf("Hello 👋. Im AI %s", appVersion))
+
+			case "huilo":
+				err = m.Send("Sam huilo 😡😡😡. ")
+
 			}
-
-
 
 			return err
 		})
